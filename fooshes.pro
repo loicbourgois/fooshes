@@ -5,14 +5,15 @@
 #-------------------------------------------------
 
 QT       += core gui
-
+C
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = fooshes
 TEMPLATE = app
 
-SOURCES += main.cpp\
-        main_window.cpp \
+SOURCES += \
+    main.cpp\
+    main_window.cpp \
     scene.cpp \
     view.cpp \
     my_query_callback.cpp \
@@ -28,7 +29,7 @@ SOURCES += main.cpp\
     infos_form.cpp \
     simulation.cpp
 
-HEADERS  += \
+HEADERS += \
     options_form.hpp \
     infos_form.hpp \
     simulation.hpp \
@@ -45,16 +46,10 @@ HEADERS  += \
     scene.hpp \
     view.hpp
 
-FORMS    += main_window.ui \
+FORMS += \
+    main_window.ui \
     options_form.ui \
     infos_form.ui
-
-#win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../../../Box2D_v2.3.0/Box2D/ -lBox2d
-#else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../../../Box2D_v2.3.0/Box2D/ -lBox2d
-#else:unix: LIBS += -L$$PWD/../../../../../Box2D_v2.3.0/Box2D/ -lBox2
-
-#INCLUDEPATH += $$PWD/../../../../../Box2D_v2.3.0/Box2D
-#DEPENDPATH += $$PWD/../../../../../Box2D_v2.3.0/Box2D
 
 QMAKE_CXXFLAGS += -std=c++11
 
