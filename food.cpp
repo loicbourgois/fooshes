@@ -1,11 +1,11 @@
-#include "food.h"
+#include "food.hpp"
 
-#include "scene.h"
+#include "scene.hpp"
 #include <Box2D/Box2D.h>
 #include <QPainter>
 #include <QColor>
 #include "simulation.hpp"
-#include "constants.h"
+#include "constants.hpp"
 #include <QDebug>
 
 int Food::count = 0;

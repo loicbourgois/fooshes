@@ -2,7 +2,7 @@
 #define BRAIN_H
 
 #include <vector>
-#include "neuron.h"
+#include "neuron.hpp"
 
 class Brain
 {

@@ -1,7 +1,7 @@
 #include "options_form.hpp"
 #include "ui_options_form.h"
 
-#include "constants.h"
+#include "constants.hpp"
 
 OptionsForm::OptionsForm(QWidget * parent) :
     QWidget(parent),

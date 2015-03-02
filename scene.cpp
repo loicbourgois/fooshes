@@ -1,10 +1,10 @@
-#include "scene.h"
+#include "scene.hpp"
 
-#include "living.h"
-#include "food.h"
-#include "foosh.h"
-#include "fire.h"
-#include "constants.h"
+#include "living.hpp"
+#include "food.hpp"
+#include "foosh.hpp"
+#include "fire.hpp"
+#include "constants.hpp"
 #include "simulation.hpp"
 
 #include <QDebug>

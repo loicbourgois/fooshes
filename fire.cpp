@@ -1,9 +1,9 @@
-#include "fire.h"
+#include "fire.hpp"
 
 #include <simulation.hpp>
 #include <Box2D/Box2D.h>
 #include <QDebug>
-#include "constants.h"
+#include "constants.hpp"
 
 #include <QPainter>
 

@@ -4,13 +4,13 @@
 #include <QFile>
 #include <QXmlStreamWriter>
 
-#include "main_window.h"
-#include "view.h"
-#include "scene.h"
-#include "living.h"
-#include "fire.h"
-#include "food.h"
-#include "foosh.h"
+#include "main_window.hpp"
+#include "view.hpp"
+#include "scene.hpp"
+#include "living.hpp"
+#include "fire.hpp"
+#include "food.hpp"
+#include "foosh.hpp"
 
 Simulation::Simulation(MainWindow * mainWindow, View * view) :
     mainWindow(mainWindow),

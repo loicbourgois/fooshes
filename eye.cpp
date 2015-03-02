@@ -1,4 +1,4 @@
-#include "eye.h"
+#include "eye.hpp"
 
 #include <Box2D/Box2D.h>
 

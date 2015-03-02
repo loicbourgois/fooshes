@@ -28,21 +28,22 @@ SOURCES += main.cpp\
     infos_form.cpp \
     simulation.cpp
 
-HEADERS  += main_window.h \
-    scene.h \
-    view.h \
-    my_query_callback.h \
-    food.h \
-    living.h \
-    fire.h \
-    foosh.h \
-    eye.h \
-    constants.h \
-    neuron.h \
-    brain.h \
+HEADERS  += \
     options_form.hpp \
     infos_form.hpp \
-    simulation.hpp
+    simulation.hpp \
+    brain.hpp \
+    constants.hpp \
+    eye.hpp \
+    fire.hpp \
+    food.hpp \
+    foosh.hpp \
+    living.hpp \
+    main_window.hpp \
+    my_query_callback.hpp \
+    neuron.hpp \
+    scene.hpp \
+    view.hpp
 
 FORMS    += main_window.ui \
     options_form.ui \

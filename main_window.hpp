@@ -4,15 +4,15 @@
 #include <QTimer>
 #include <QSettings>
 
-#include "living.h"
+#include "living.hpp"
 #include "options_form.hpp"
 #include "infos_form.hpp"
 
 #include "ui_options_form.h"
 #include "ui_infos_form.h"
 
-#include "foosh.h"
-#include "food.h"
+#include "foosh.hpp"
+#include "food.hpp"
 
 namespace Ui {
     class MainWindow;

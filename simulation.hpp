@@ -1,7 +1,7 @@
 #pragma once
 
-#include "living.h"
-#include "constants.h"
+#include "living.hpp"
+#include "constants.hpp"
 
 class MainWindow;
 class View;

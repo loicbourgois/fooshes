@@ -1,4 +1,4 @@
-#include "main_window.h"
+#include "main_window.hpp"
 #include "ui_main_window.h"
 
 #include "ui_options_form.h"
@@ -7,9 +7,9 @@
 
 #include <QColor>
 #include <QThread>
-#include "food.h"
-#include "fire.h"
-#include "foosh.h"
+#include "food.hpp"
+#include "fire.hpp"
+#include "foosh.hpp"
 #include <QDebug>
 #include <QBitArray>
 
@@ -18,12 +18,12 @@
 #include <QFileDialog>
 
 #include <Box2D/Box2D.h>
-#include "my_query_callback.h"
+#include "my_query_callback.hpp"
 
-#include "scene.h"
-#include "view.h"
+#include "scene.hpp"
+#include "view.hpp"
 
-#include "constants.h"
+#include "constants.hpp"
 
 #include "simulation.hpp"
 

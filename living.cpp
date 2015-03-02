@@ -1,6 +1,6 @@
-#include "living.h"
+#include "living.hpp"
 
-#include "scene.h"
+#include "scene.hpp"
 #include <Box2D/Box2D.h>
 #include <QXmlStreamWriter>
 #include <QPainter>
@@ -8,8 +8,8 @@
 #include "simulation.hpp"
 #include <QDebug>
 
-#include "my_query_callback.h"
-#include "constants.h"
+#include "my_query_callback.hpp"
+#include "constants.hpp"
 
 Living::Living(int id, Simulation * simulation, Scene *scene, b2World * world, int x, int y, Living * parent, Type type, int DNAsize, float ratio1, float ratio2, float ratio3)
     : QGraphicsItem(),

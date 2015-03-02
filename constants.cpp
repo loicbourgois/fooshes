@@ -1,4 +1,4 @@
-#include "constants.h"
+#include "constants.hpp"
 
 //  Options x 12
 const QString ConstantStrings::fpsMax = "fpsMax";

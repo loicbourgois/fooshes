@@ -1,9 +1,9 @@
-#include "view.h"
+#include "view.hpp"
 
-#include "scene.h"
+#include "scene.hpp"
 #include <QDebug>
 #include <QMouseEvent>
-#include <main_window.h>
+#include <main_window.hpp>
 
 View::View(MainWindow * mainWindow)
     : QGraphicsView(/*new QGraphicsScene(), */mainWindow),

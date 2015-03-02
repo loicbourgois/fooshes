@@ -1,9 +1,9 @@
-#include "foosh.h"
+#include "foosh.hpp"
 
 #include <QPainter>
 #include "simulation.hpp"
 #include <QDebug>
-#include "constants.h"
+#include "constants.hpp"
 
 int Foosh::count = 0;
 int Foosh::olderAge = 0;

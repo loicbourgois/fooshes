@@ -1,7 +1,7 @@
 #ifndef OBJECT_H
 #define OBJECT_H
 
-#include "living.h"
+#include "living.hpp"
 
 #include <QXmlStreamWriter>
 

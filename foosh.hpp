@@ -1,10 +1,10 @@
 #ifndef FOOSH_H
 #define FOOSH_H
 
-#include "living.h"
-#include "eye.h"
+#include "living.hpp"
+#include "eye.hpp"
 
-#include "brain.h"
+#include "brain.hpp"
 
 class Foosh : public Living
 {

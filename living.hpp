@@ -4,7 +4,7 @@
 
 
 #include <Box2D/Box2D.h>
-#include "my_query_callback.h"
+#include "my_query_callback.hpp"
 
 #include <QXmlStreamWriter>
 
