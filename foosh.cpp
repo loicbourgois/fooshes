@@ -146,10 +146,13 @@ void Foosh::load(QXmlStreamReader &xml)
 
 void Foosh::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,QWidget *widget)
 {
-    setPos(body->GetPosition().x, body->GetPosition().y);
-    setRotation(body->GetAngle());
+    //
     (void)option;
     (void)widget;
+    //
+    setPos(body->GetPosition().x, body->GetPosition().y);
+    setRotation(body->GetAngle());
+    //
     painter->setPen(Qt::NoPen);
     //aura
     if(olderFoosh == this)
@@ -254,30 +257,40 @@ void Foosh::go(int step)
         int r = rand() % Foosh::reflexionTime;
         if(!r)
         {
-
-
             //  Eyes
             for(unsigned int i = 0 ; i < eyes.size() ; i++)
             {
-
-
                 Eye * eye = eyes[i];
+                //setPos(body->GetPosition().x, body->GetPosition().y);
+                //setRotation(body->GetAngle());
+                //QPointF a = mapToScene(eye->xmin, eye->ymin);
+                //QPointF b = mapToScene(eye->xmax, eye->ymax);
+                b2Vec2 A;
+                b2Vec2 B;
+                float Angle = body->GetAngle() * b2_pi / 180.0f;
+                A.x = cos(Angle) * eye->xmin - sin(Angle) * eye->ymin;
+                A.y = cos(Angle) * eye->ymin + sin(Angle) * eye->xmin;
+                B.x = cos(Angle) * eye->xmax - sin(Angle) * eye->ymax;
+                B.y = cos(Angle) * eye->ymax + sin(Angle) * eye->xmax;
+                A += body->GetPosition();
+                B += body->GetPosition();
+
                 RayCastClosestCallback callback;
-                //  TODO
-                QPointF a = mapToScene(eye->xmin, eye->ymin);
-                QPointF b = mapToScene(eye->xmax, eye->ymax);
-
-                b2Vec2 A(a.x(), a.y());
-                b2Vec2 B(b.x(), b.y());
-
                 body->GetWorld()->RayCast(&callback, A, B);
-
                 if (callback.hit)
                 {
-                    QPointF ey = mapFromScene(callback.point.x, callback.point.y);
+                    /*QPointF ey = mapFromScene(callback.point.x, callback.point.y);
                     eye->x = ey.x();
-                    eye->y = ey.y();
-
+                    eye->y = ey.y();*/
+                    float Ax = body->GetPosition().x;
+                    float Ay = body->GetPosition().y;
+                    float Bx = callback.point.x;
+                    float By = callback.point.y;
+                    float relativeX = Bx - Ax;
+                    float relativeY = By - Ay;
+                    float Angle = body->GetAngle() * b2_pi / 180.0f;
+                    eye->x = cos(-Angle) * relativeX - sin(-Angle) * relativeY;
+                    eye->y = cos(-Angle) * relativeY + sin(-Angle) * relativeX;
                     Living *living = (Living *)callback.body->GetUserData();
                     eye->color = living->getColor();
                 }
@@ -319,8 +332,6 @@ void Foosh::go(int step)
         }
         //  make choices
         {
-
-
             //  move
             speed += brain->getOutput(0);
             if (speed > speedMax )
@@ -332,15 +343,14 @@ void Foosh::go(int step)
                 angularSpeed = angularSpeedMax;
             if (angularSpeed < -angularSpeedMax)
                 angularSpeed = -angularSpeedMax;
+            /*speed = brain->getOutput(0) * speedMax;
+            angularSpeed = brain->getOutput(1) * angularSpeedMax;*/
 
 
-            float andRad = (body->GetAngle() + angularSpeed) * b2_pi / 180.0f ;
-            float vX = speed*sin(-andRad);
-            float vY = speed*cos(-andRad);
+            float angleRadian = (body->GetAngle() + angularSpeed) * b2_pi / 180.0f ;
+            float vX = speed*sin(-angleRadian);
+            float vY = speed*cos(-angleRadian);
             body->SetTransform(body->GetPosition() + b2Vec2(vX,vY), body->GetAngle()+angularSpeed);
-            //
-            setPos(body->GetPosition().x, body->GetPosition().y);
-            setRotation(body->GetAngle());
         }
         {
             //  Change color
@@ -395,11 +405,11 @@ void Foosh::reset()
 {
     count = 0;
     deaths = 0;
-    globalSpeedMax = 0.5f;
+    globalSpeedMax = 1.0f;
     olderAge = 0;
     globalAngularSpeedMax = 1.0f;
     agingSpeed = 0.001f;
-    digestionMax = 0.1f;
+    digestionMax = 0.2f;
     reflexionTime = 2;
 }
 
