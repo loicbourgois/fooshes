@@ -58,7 +58,6 @@ Living::Living(int id, Simulation * simulation, Scene *scene, b2World * world, i
         polygon.append(QPoint(ppolygonShape->GetVertex(i).x, ppolygonShape->GetVertex(i).y));
     }
     body->SetUserData(this);
-    setPos(body->GetPosition().x, body->GetPosition().y);
     //
 }
 

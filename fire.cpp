@@ -73,6 +73,8 @@ void Fire::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWid
 {
     (void)option;
     (void)widget;
+    setPos(body->GetPosition().x, body->GetPosition().y);
+    setRotation(body->GetAngle());
     painter->setPen(Qt::NoPen);
     painter->setBrush(color);
     painter->drawPolygon(polygon);
@@ -165,6 +167,4 @@ void Fire::go(int step)
     if(energy < 0.0f)
         kill();*/
     //  Position
-    setPos(body->GetPosition().x, body->GetPosition().y);
-    setRotation(body->GetAngle());
 }

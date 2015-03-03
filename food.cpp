@@ -130,6 +130,8 @@ void Food::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
 {
     (void) option;
     (void) widget;
+    setPos(body->GetPosition().x, body->GetPosition().y);
+    setRotation(body->GetAngle());
     painter->setPen(Qt::NoPen);
     painter->setBrush(color);
     painter->drawPolygon(polygon);
@@ -205,8 +207,7 @@ void Food::go(int step)
         //  Couleur
         color = QColor(r * energy, g * energy, b * energy);
         //  Position
-        setPos(body->GetPosition().x, body->GetPosition().y);
-        setRotation(body->GetAngle());
+
 
     }
 }
