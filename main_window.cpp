@@ -45,6 +45,7 @@ MainWindow::MainWindow(QWidget *parent) :
     go(true),
     CPS(0),
     FPS(0)
+
 {
     //  Inits.
     ui->setupUi(this);
@@ -141,7 +142,7 @@ void MainWindow::onTimer1Seconde()
 void MainWindow::onTimer10Secondes()
 {
     simulation->deleteOutsiders();
-    saveSettings();
+    //saveSettings();
 }
 
 void MainWindow::onTimer10Minutes()
