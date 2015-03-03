@@ -153,11 +153,16 @@ void Foosh::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,QWid
     //aura
     if(olderFoosh == this)
     {
-        QColor color = QColor(Qt::white);
-        color.setAlpha(64);
-        painter->setBrush(color);
+        //  Aura
+        QColor colorr = QColor(Qt::white);
+        colorr.setAlpha(64);
+        painter->setBrush(colorr);
         painter->drawEllipse(-50, -50, 100, 100);
         //  Eyes - captors
+        colorr = QColor(Qt::white);
+        colorr.setAlpha(16);
+        painter->setBrush(colorr);
+        painter->drawPie(-50, -50, 100, 100, -45*16, -90*16);
         for(unsigned int i = 0 ; i < eyes.size() ; i++)
         {
             Eye * eye = eyes[i];
@@ -165,6 +170,23 @@ void Foosh::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,QWid
             painter->drawLine(eye->xmin, eye->ymin, eye->x, eye->y);
         }
     }
+    else //if(all vision = true) TODO
+    {
+        //  Eyes - captors
+        QColor colorr = QColor(Qt::white);
+        colorr.setAlpha(16);
+        painter->setBrush(colorr);
+        painter->drawPie(-50, -50, 100, 100, -45*16, -90*16);
+        for(unsigned int i = 0 ; i < eyes.size() ; i++)
+        {
+            Eye * eye = eyes[i];
+            painter->setPen(eye->color);
+            painter->drawLine(eye->xmin, eye->ymin, eye->x, eye->y);
+        }
+    }
+
+
+
     // Body
     painter->setPen(Qt::NoPen);
     painter->setBrush(color);
@@ -279,8 +301,8 @@ void Foosh::go(int step)
                 }
                 else
                 {
-                    eye->x = eye->xmax;
-                    eye->y = eye->ymax;
+                    eye->x = eye->xmin;
+                    eye->y = eye->ymin;
                     eye->color = QColor(0,0,0);
                 }
             }
