@@ -43,8 +43,10 @@ void Brain::compute(std::vector<float> & inputs)
     }
 }
 
-float Brain::getOutput(int id)
+float Brain::getOutput(unsigned int id)
 {
+    /*if(id >= neurons.size())
+        return nan("Out of scope");*/
     float output = neurons[id]->getOutput();
     return output;
 }
