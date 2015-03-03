@@ -38,10 +38,10 @@ Simulation::Simulation(MainWindow * mainWindow, View * view) :
     b2Vec2 gravity(0.0f, 0.0f);
     world = new b2World(gravity);
     //  Settings
-    setWidth(1500);
-    setHeight(1000);
-    setFireGap(80);
-    setFoodGap(20);
+    setWidth(3000);
+    setHeight(2000);
+    setFireGap(90);
+    setFoodGap(30);
     setCpsmax(1000);
     setFpsmax(100);
     setFooshesMin(20);
