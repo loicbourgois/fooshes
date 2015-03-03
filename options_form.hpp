@@ -1,5 +1,4 @@
-#ifndef OPTIONS_FORM_HPP
-#define OPTIONS_FORM_HPP
+#pragma once
 
 #include <QWidget>
 
@@ -17,5 +16,3 @@ public:
     Ui::OptionsForm * ui;
 
 };
-
-#endif // OPTIONS_FORM_HPP

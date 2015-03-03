@@ -1,9 +1,7 @@
-#ifndef FOOSH_H
-#define FOOSH_H
+#pragma once
 
 #include "living.hpp"
 #include "eye.hpp"
-
 #include "brain.hpp"
 
 class Foosh : public Living
@@ -55,5 +53,3 @@ private:
     Brain * brain;
 
 };
-
-#endif // FOOSH_H

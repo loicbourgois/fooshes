@@ -1,9 +1,6 @@
-#ifndef FIRE_H
-#define FIRE_H
+#pragma once
 
 #include "living.hpp"
-
-
 
 class Fire : public Living
 {
@@ -20,5 +17,3 @@ public:
 private:
     static int count;
 };
-
-#endif // FIRE_H

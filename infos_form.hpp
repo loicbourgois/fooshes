@@ -1,5 +1,4 @@
-#ifndef INFOS_FORM_HPP
-#define INFOS_FORM_HPP
+#pragma once
 
 #include <QWidget>
 
@@ -16,5 +15,3 @@ public:
     ~InfosForm();
     Ui::InfosForm * ui;
 };
-
-#endif // INFOS_FORM_HPP

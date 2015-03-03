@@ -1,16 +1,10 @@
-#ifndef LIVING_H
-#define LIVING_H
-
-
+#pragma once
 
 #include <Box2D/Box2D.h>
-#include "my_query_callback.hpp"
-
 #include <QXmlStreamWriter>
-
-
 #include <QGraphicsItem>
 #include <Qvariant>
+#include "my_query_callback.hpp"
 
 class b2Body;
 class Scene;
@@ -82,4 +76,3 @@ private:
 
 };
 
-#endif // LIVING_H

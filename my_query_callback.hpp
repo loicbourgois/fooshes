@@ -1,9 +1,7 @@
-#ifndef MYQUERYCALLBACK_H
-#define MYQUERYCALLBACK_H
+#pragma once
 
 #include <Box2D/Box2D.h>
 #include <QDebug>
-
 
 class MyQueryCallback : public b2QueryCallback {
 public:
@@ -14,7 +12,6 @@ public:
         return true;//keep going to find all fixtures in the query area
     }
 };
-
 
 class RayCastClosestCallback : public b2RayCastCallback
 {
@@ -36,5 +33,3 @@ public:
     b2Vec2 normal;
     b2Body * body;
 };
-
-#endif // MYQUERYCALLBACK_H

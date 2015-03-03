@@ -1,9 +1,10 @@
 #include "foosh.hpp"
 
-#include <QPainter>
-#include "simulation.hpp"
 #include <QDebug>
+#include <QPainter>
+
 #include "constants.hpp"
+#include "simulation.hpp"
 
 int Foosh::count = 0;
 int Foosh::olderAge = 0;
@@ -13,7 +14,6 @@ float Foosh::globalSpeedMax = 0.0f;
 float Foosh::globalAngularSpeedMax = 0.0f;
 float Foosh::agingSpeed = 0.0f;
 float Foosh::digestionMax = 0.0f;
-
 Foosh * Foosh::olderFoosh = nullptr;
 
 Foosh::Foosh(int id, Simulation * simulation, Scene *scene, b2World * world, int x, int y, Foosh * parent, Type type)
@@ -85,7 +85,7 @@ void Foosh::save(QXmlStreamWriter &xml)
 
 void Foosh::load(QXmlStreamReader &xml)
 {
-    //  8 elements
+    // Attributs x 8
     float x = 0;
     float y = 0;
     float angle = 0;
@@ -140,10 +140,6 @@ void Foosh::load(QXmlStreamReader &xml)
     this->speciesAge = species_age;
 }
 
-
-
-
-
 void Foosh::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,QWidget *widget)
 {
     //
@@ -192,7 +188,6 @@ void Foosh::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,QWid
     painter->drawEllipse(QPointF(-radius/2,radius + radius/4), radius/4, radius/4);
 }
 
-
 void Foosh::go(int step)
 {
     if(dead)
@@ -209,9 +204,6 @@ void Foosh::go(int step)
             olderAge = age;
             olderFoosh = this;
         }
-
-
-
         //  Eating ?
         b2AABB aabb;
         float x1 = body->GetPosition().x-radius;
@@ -239,8 +231,6 @@ void Foosh::go(int step)
                 }
             }
         }
-
-
         //  Energy
         energy -= agingSpeed;
         if(energy >= 1)
@@ -261,10 +251,6 @@ void Foosh::go(int step)
             for(unsigned int i = 0 ; i < eyes.size() ; i++)
             {
                 Eye * eye = eyes[i];
-                //setPos(body->GetPosition().x, body->GetPosition().y);
-                //setRotation(body->GetAngle());
-                //QPointF a = mapToScene(eye->xmin, eye->ymin);
-                //QPointF b = mapToScene(eye->xmax, eye->ymax);
                 b2Vec2 A;
                 b2Vec2 B;
                 float Angle = body->GetAngle() * b2_pi / 180.0f;
@@ -279,9 +265,6 @@ void Foosh::go(int step)
                 body->GetWorld()->RayCast(&callback, A, B);
                 if (callback.hit)
                 {
-                    /*QPointF ey = mapFromScene(callback.point.x, callback.point.y);
-                    eye->x = ey.x();
-                    eye->y = ey.y();*/
                     float Ax = body->GetPosition().x;
                     float Ay = body->GetPosition().y;
                     float Bx = callback.point.x;
@@ -301,8 +284,6 @@ void Foosh::go(int step)
                     eye->color = QColor(0,0,0);
                 }
             }
-
-
             //  Brain
             std::vector<float> inputs;
             inputs.push_back(1.0f);
@@ -314,7 +295,6 @@ void Foosh::go(int step)
                 inputs.push_back(angularSpeed/angularSpeedMax);
             else
                 inputs.push_back(0.0f);
-
             for(unsigned int i = 0 ; i < eyes.size() ; i++)
             {
                 Eye * eye = eyes[i];
@@ -333,20 +313,16 @@ void Foosh::go(int step)
         //  make choices
         {
             //  move
-            speed += brain->getOutput(0);
+            speed += brain->getOutput(0) * speedMax;
             if (speed > speedMax )
                 speed = speedMax;
             if (speed < -speedMax)
                 speed = -speedMax;
-            angularSpeed += brain->getOutput(1);
+            angularSpeed += brain->getOutput(1) * angularSpeedMax;
             if (angularSpeed > angularSpeedMax )
                 angularSpeed = angularSpeedMax;
             if (angularSpeed < -angularSpeedMax)
                 angularSpeed = -angularSpeedMax;
-            /*speed = brain->getOutput(0) * speedMax;
-            angularSpeed = brain->getOutput(1) * angularSpeedMax;*/
-
-
             float angleRadian = (body->GetAngle() + angularSpeed) * b2_pi / 180.0f ;
             float vX = speed*sin(-angleRadian);
             float vY = speed*cos(-angleRadian);
@@ -427,5 +403,3 @@ int Foosh::getSpeciesAge()
 {
     return speciesAge;
 }
-
-

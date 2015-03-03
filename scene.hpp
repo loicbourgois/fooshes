@@ -1,5 +1,4 @@
-#ifndef SCENE_H
-#define SCENE_H
+#pragma once
 
 #include <QGraphicsScene>
 
@@ -12,5 +11,3 @@ public:
     ~Scene();
     void advance();
 };
-
-#endif // SCENE_H

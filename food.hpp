@@ -1,9 +1,7 @@
-#ifndef OBJECT_H
-#define OBJECT_H
-
-#include "living.hpp"
+#pragma once
 
 #include <QXmlStreamWriter>
+#include "living.hpp"
 
 class b2Body;
 class Scene;
@@ -38,5 +36,3 @@ private:
     int b;
 
 };
-
-#endif // OBJECT_H

@@ -1,5 +1,4 @@
-#ifndef EYE_H
-#define EYE_H
+#pragma once
 
 #include <QColor>
 
@@ -20,5 +19,3 @@ public:
     float ymax;
     QColor color;
 };
-
-#endif // EYE_H
