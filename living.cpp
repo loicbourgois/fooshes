@@ -59,6 +59,8 @@ Living::Living(int id, Simulation * simulation, Scene *scene, b2World * world, i
     }
     body->SetUserData(this);
     //
+    setPos(body->GetPosition().x, body->GetPosition().y);
+    setRotation(body->GetAngle());
 }
 
 Living::~Living()
@@ -76,6 +78,7 @@ void Living::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QW
     (void)option;
     (void)widget;
     setPos(body->GetPosition().x, body->GetPosition().y);
+    setRotation(body->GetAngle());
     painter->setPen(Qt::NoPen);
     painter->setBrush(this->color);
     painter->drawPolygon(polygon);

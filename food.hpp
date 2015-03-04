@@ -31,8 +31,8 @@ private:
     static int count;
     static int eatenCount;
     static float growingSpeed;
-    int r;
-    int g;
-    int b;
+    float r;
+    float g;
+    float b;
 
 };

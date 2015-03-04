@@ -184,9 +184,6 @@ void Foosh::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,QWid
             painter->drawLine(eye->xmin, eye->ymin, eye->x, eye->y);
         }
     }
-
-
-
     // Body
     painter->setPen(Qt::NoPen);
     painter->setBrush(color);
@@ -370,10 +367,13 @@ void Foosh::buildPhenotype()
     idCharacter = 0;
     {
         //  colour
-        int r = getNextCharacter(0,255);
-        int g = getNextCharacter(0,255);
-        int b = getNextCharacter(0,255);
-        color = QColor(r,g,b);
+        QColor c1(0,255,0); // green
+        QColor c2(0,0,255); // blue
+        float ratio = getNextCharacter(0, 1.0f);
+        float r = c1.redF() + ratio * (c2.redF() - c1.redF());
+        float g = c1.greenF() + ratio * (c2.greenF() - c1.greenF());
+        float b = c1.blueF() + ratio * (c2.blueF() - c1.blueF());
+        color.setRgbF(r, g, b);
         //  Max speeds
         speedMax = getNextCharacter(0.0f, globalSpeedMax);
         angularSpeedMax = getNextCharacter(0.0f, globalAngularSpeedMax);

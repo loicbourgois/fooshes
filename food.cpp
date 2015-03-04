@@ -13,7 +13,7 @@ int Food::eatenCount = 0;
 float Food::growingSpeed = 0;
 
 Food::Food(int id, Simulation * simulation, Scene *scene, b2World * world, int x, int y, Food * parent, Type type)
-    : Living(id, simulation, scene, world, x, y, parent, type, 1, 0.1f, 0.1f, 0.0f)
+    : Living(id, simulation, scene, world, x, y, parent, type, 3, 0.1f, 0.1f, 0.0f)
 {
     count ++;
     buildPhenotype();
@@ -106,23 +106,13 @@ void Food::load(QXmlStreamReader &xml)
 void Food::buildPhenotype()
 {
     idCharacter = 0;
-    r = 0.0f;
-    float ratio = getNextCharacter(-1.0f, 1.0f);
-    if(ratio == 0.0f)
-    {
-        g = 255.0f;
-        b = 255.0f;
-    }
-    else if(ratio > 0)
-    {
-        g = 255.0f;
-        b = 255.0f * (1.0f - ratio);
-    }
-    else if(ratio < 0)
-    {
-        g = 255.0f * (1.0f + ratio);
-        b = 255.0f;
-    }
+    //  Color.
+    QColor c1(255,255,0); // yellow
+    QColor c2(0,255,0); // green
+    float ratio = getNextCharacter(0, 1.0f);
+    r = c1.redF() + ratio * (c2.redF() - c1.redF());
+    g = c1.greenF() + ratio * (c2.greenF() - c1.greenF());
+    b = c1.blueF() + ratio * (c2.blueF() - c1.blueF());
 }
 
 void Food::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
@@ -205,10 +195,7 @@ void Food::go(int step)
             }
         }
         //  Couleur
-        color = QColor(r * energy, g * energy, b * energy);
-        //  Position
-
-
+        color.setRgbF(r*energy, g*energy, b*energy);
     }
 }
 
