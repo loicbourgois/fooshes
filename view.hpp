@@ -12,6 +12,7 @@ public:
     ~View();
 private:
     void mousePressEvent ( QMouseEvent * event );
+    void mouseReleaseEvent( QMouseEvent * event );
     void wheelEvent(QWheelEvent *event);
 private:
     MainWindow * mainWindow;

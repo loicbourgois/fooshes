@@ -7,14 +7,14 @@
 
 View::View(MainWindow * mainWindow)
     : QGraphicsView(/*new QGraphicsScene(), */mainWindow),
-    mainWindow(mainWindow)
+      mainWindow(mainWindow)
 {
     setBackgroundBrush(QBrush(Qt::black, Qt::SolidPattern));
     setViewportUpdateMode(QGraphicsView::NoViewportUpdate);
     setHorizontalScrollBarPolicy( Qt::ScrollBarAlwaysOff );
     setVerticalScrollBarPolicy( Qt::ScrollBarAlwaysOff );
     scale(1, -1);
-    setSceneRect(-2000, -2000, 4000, 4000);
+    setSceneRect(-20000, -20000, 40000, 40000);
     centerOn(0,0);
 }
 
@@ -25,10 +25,23 @@ View::~View()
 
 void View::mousePressEvent(QMouseEvent * event)
 {
-    if (event->modifiers() & Qt::ControlModifier)
-        mainWindow->clickAt(mapToScene(event->pos()).x(), mapToScene(event->pos()).y(), Living::Type::FOOD);
+    setDragMode(QGraphicsView::NoDrag);
+    if (event->button() == Qt::MidButton )
+    {
+        setDragMode(QGraphicsView::ScrollHandDrag);
+        QMouseEvent fake(event->type(), event->pos(), Qt::LeftButton, Qt::LeftButton, event->modifiers());
+        QGraphicsView::mousePressEvent(&fake);
+    }
     else
+    {
         mainWindow->clickAt(mapToScene(event->pos()).x(), mapToScene(event->pos()).y(), Living::Type::FOOSH);
+    }
+}
+
+void View::mouseReleaseEvent(QMouseEvent *event)
+{
+    (void)event;
+    setDragMode(QGraphicsView::NoDrag);
 }
 
 
@@ -37,13 +50,13 @@ void View::wheelEvent(QWheelEvent *event)
     //if (event->modifiers() & Qt::ControlModifier)
     {
         if (event->delta() > 0)
-            this->scale(2,2);
+            scale(2,2);
         else
-            this->scale(0.5,0.5);
+            scale(0.5,0.5);
         event->accept();
     }
-    //else
+    /*else
     {
-        //QGraphicsView::wheelEvent(event);
-    }
+        QGraphicsView::wheelEvent(event);
+    }*/
 }
