@@ -1,10 +1,6 @@
 #include "main_window.hpp"
 #include "ui_main_window.h"
 
-#include "ui_options_form.h"
-#include "ui_infos_form.h"
-
-
 #include <QColor>
 #include <QThread>
 #include "food.hpp"
@@ -12,27 +8,23 @@
 #include "foosh.hpp"
 #include <QDebug>
 #include <QBitArray>
-
 #include <QGraphicsItem>
-
 #include <QFileDialog>
-
 #include <Box2D/Box2D.h>
 #include "my_query_callback.hpp"
-
 #include "scene.hpp"
 #include "view.hpp"
-
 #include "constants.hpp"
-
 #include "simulation.hpp"
-
+#include "ui_options_form.h"
+#include "ui_infos_form.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
     optionsForm(new OptionsForm(this)),
     infosForm(new InfosForm(this)),
+    controlForm(new ControlForm(this)),
     view(new View(this)),
     timerAdvance(new QTimer(this)),
     timerUpdate(new QTimer(this)),
@@ -51,8 +43,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     view->scale(0.5,0.5);
     ui->widgetView->layout()->addWidget(view);
-    ui->tabInfos->layout()->addWidget(infosForm);
-    ui->tabOptions->layout()->addWidget(optionsForm);
+    ui->scrollAreaInfos->setWidget(infosForm);
+    ui->scrollAreaInfos->setMinimumWidth(infosForm->sizeHint().width());
+    ui->scrollAreaOptions->setWidget(optionsForm);
+    ui->scrollAreaOptions->setMinimumWidth(optionsForm->sizeHint().width());
+    ui->scrollAreaControls->setWidget(controlForm);
     //
     QObject::connect(timerAdvance, SIGNAL(timeout()), this, SLOT(onAdvance()));
     QObject::connect(timerUpdate, SIGNAL(timeout()), this, SLOT(onUpdate()));
@@ -106,6 +101,11 @@ void MainWindow::startSimulation()
     timerUpdate->start(1000/simulation->getFpsmax());
 }
 
+void MainWindow::pauseSimulation()
+{
+    timerAdvance->stop();
+}
+
 void MainWindow::stopSimulation()
 {
     timerAdvance->stop();
@@ -127,7 +127,7 @@ void MainWindow::onUpdate()
     infosForm->ui->labelFooshesDeaths->setText("Dead : " +QString::number(Foosh::getDeaths()));
     infosForm->ui->labelSteps->setText("Steps : " + QString::number(simulation->getSteps()));
     infosForm->ui->labelTimeElapsed->setText("Time : " + QString::number(simulation->getTimeElapsed()));
-    view->centerOn(0,0);
+    //view->centerOn(0,0);
     FPS++;
 }
 
@@ -141,7 +141,7 @@ void MainWindow::onTimer1Seconde()
 
 void MainWindow::onTimer10Secondes()
 {
-    simulation->deleteOutsiders();
+    //simulation->deleteOutsiders();
     //saveSettings();
 }
 
@@ -238,9 +238,19 @@ void MainWindow::onUpdateFooshAgingSpeed(double d)
 }
 
 
-void MainWindow::center()
+void MainWindow::onCenter()
 {
-    this->view->centerOn(0,0);
+    view->centerOn(0,0);
+}
+
+void MainWindow::onZoomIn()
+{
+    view->scale(2,2);
+}
+
+void MainWindow::onZoomOut()
+{
+    view->scale(0.5,0.5);
 }
 
 void MainWindow::on_actionFull_Screen_toggled(bool arg1)
@@ -317,5 +327,5 @@ void MainWindow::on_pushButtonPlay_clicked()
 
 void MainWindow::on_pushButtonPause_clicked()
 {
-    stopSimulation();
+    pauseSimulation();
 }

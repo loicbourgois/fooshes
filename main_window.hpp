@@ -8,6 +8,8 @@
 #include "infos_form.hpp"
 #include "ui_options_form.h"
 #include "ui_infos_form.h"
+#include "ihm/control_form.hpp"
+#include "ui_control_form.h"
 #include "foosh.hpp"
 #include "food.hpp"
 
@@ -35,6 +37,9 @@ public:
     void saveSettings();
 
     void startSimulation();
+
+    void pauseSimulation();
+
     void stopSimulation();
 
     void setSpinboxes();
@@ -61,10 +66,11 @@ public slots:
 
     void onUpdateFoodGrowingSpeed(double d){Food::setGrowingSpeed(d);}
     void onUpdateFoodGap(int i);
-
     void onUpdateFireGap(int i);
 
-    void center();
+    void onCenter();
+    void onZoomIn();
+    void onZoomOut();
 
 private slots:
     void on_actionFull_Screen_toggled(bool arg1);
@@ -84,6 +90,8 @@ private:
 
     OptionsForm * optionsForm;
     InfosForm * infosForm;
+    ControlForm * controlForm;
+
 
     View * view;
 

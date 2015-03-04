@@ -75,11 +75,11 @@ SOURCES += \
     $${BOX2D}/Dynamics/b2Island.cpp \
     $${BOX2D}/Dynamics/b2World.cpp \
     $${BOX2D}/Dynamics/b2WorldCallbacks.cpp \
-    $${BOX2D}/Rope/b2Rope.cpp
+    $${BOX2D}/Rope/b2Rope.cpp \
+    ihm/control_form.cpp
 
 HEADERS += \
     options_form.hpp \
-    infos_form.hpp \
     simulation.hpp \
     brain.hpp \
     constants.hpp \
@@ -88,7 +88,6 @@ HEADERS += \
     food.hpp \
     foosh.hpp \
     living.hpp \
-    main_window.hpp \
     my_query_callback.hpp \
     neuron.hpp \
     scene.hpp \
@@ -139,12 +138,16 @@ HEADERS += \
     $${BOX2D}/Dynamics/b2World.h \
     $${BOX2D}/Dynamics/b2WorldCallbacks.h \
     $${BOX2D}/Rope/b2Rope.h \
-    $${BOX2D}/Box2D.h
+    $${BOX2D}/Box2D.h \
+    infos_form.hpp \
+    main_window.hpp \
+    ihm/control_form.hpp
 
 FORMS += \
     main_window.ui \
     options_form.ui \
-    infos_form.ui
+    infos_form.ui \
+    ihm/control_form.ui
 
 QMAKE_CXXFLAGS += -std=c++11
 
