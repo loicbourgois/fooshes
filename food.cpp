@@ -213,5 +213,5 @@ void Food::reset()
 {
     count = 0;
     eatenCount = 0;
-    growingSpeed = 0.001f;
+    growingSpeed = 0.0005f;
 }

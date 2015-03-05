@@ -125,17 +125,17 @@ void Fire::go(int step)
         case 3:
             simulation->addLiving(body->GetPosition().x - space, body->GetPosition().y, this, Living::Type::FIRE);
             break;
-            /*case 0:
-            mainWindow->addLiving(body->GetPosition().x + space/2, body->GetPosition().y + space/2, this, Living::Type::FIRE);
+        /*case 0:
+            simulation->addLiving(body->GetPosition().x + space, body->GetPosition().y + space, this, Living::Type::FIRE);
             break;
         case 1:
-            mainWindow->addLiving(body->GetPosition().x + space/2, body->GetPosition().y - space/2, this, Living::Type::FIRE);
+            simulation->addLiving(body->GetPosition().x + space, body->GetPosition().y - space, this, Living::Type::FIRE);
             break;
         case 2:
-            mainWindow->addLiving(body->GetPosition().x - space/2, body->GetPosition().y + space/2, this, Living::Type::FIRE);
+            simulation->addLiving(body->GetPosition().x - space, body->GetPosition().y + space, this, Living::Type::FIRE);
             break;
         case 3:
-            mainWindow->addLiving(body->GetPosition().x - space/2, body->GetPosition().y - space/2, this, Living::Type::FIRE);
+            simulation->addLiving(body->GetPosition().x - space, body->GetPosition().y - space, this, Living::Type::FIRE);
             break;*/
 
         }

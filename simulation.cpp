@@ -44,7 +44,7 @@ Simulation::Simulation(MainWindow * mainWindow, View * view) :
     setFoodGap(30);
     setCpsmax(1000);
     setFpsmax(100);
-    setFooshesMin(20);
+    setFooshesMin(10);
     //  Populate
     populate();
 }
