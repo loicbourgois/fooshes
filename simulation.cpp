@@ -436,6 +436,7 @@ void Simulation::setWidth(float i)
     width = i;
     xmax = width / 2;
     xmin = - xmax;
+    view->setSceneRect(xmin*2, ymin*2, width*2, height*2);
 }
 
 void Simulation::setHeight(float i)
@@ -443,6 +444,7 @@ void Simulation::setHeight(float i)
     height = i;
     ymax = height / 2;
     ymin = - ymax;
+    view->setSceneRect(xmin*2, ymin*2, width*2, height*2);
 }
 
 void Simulation::setFireGap(float i)

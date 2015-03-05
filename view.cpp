@@ -14,7 +14,6 @@ View::View(MainWindow * mainWindow)
     setHorizontalScrollBarPolicy( Qt::ScrollBarAlwaysOff );
     setVerticalScrollBarPolicy( Qt::ScrollBarAlwaysOff );
     scale(1, -1);
-    setSceneRect(-20000, -20000, 40000, 40000);
     centerOn(0,0);
 }
 

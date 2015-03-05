@@ -11,6 +11,7 @@ public:
     Foosh(int id, Simulation *simulation, Scene *scene, b2World *world, QXmlStreamReader &xml);
     ~Foosh();
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,QWidget *widget);
+
     void go(int step);
     virtual void buildPhenotype();
     void save(QXmlStreamWriter &xml);
