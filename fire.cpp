@@ -113,7 +113,7 @@ void Fire::go(int step)
         int r = rand() % 4;
         switch(r)
         {
-        case 0:
+        /*case 0:
             simulation->addLiving(body->GetPosition().x, body->GetPosition().y + space, this, Living::Type::FIRE);
             break;
         case 1:
@@ -124,8 +124,8 @@ void Fire::go(int step)
             break;
         case 3:
             simulation->addLiving(body->GetPosition().x - space, body->GetPosition().y, this, Living::Type::FIRE);
-            break;
-        /*case 0:
+            break;*/
+        case 0:
             simulation->addLiving(body->GetPosition().x + space, body->GetPosition().y + space, this, Living::Type::FIRE);
             break;
         case 1:
@@ -136,7 +136,7 @@ void Fire::go(int step)
             break;
         case 3:
             simulation->addLiving(body->GetPosition().x - space, body->GetPosition().y - space, this, Living::Type::FIRE);
-            break;*/
+            break;
 
         }
     }

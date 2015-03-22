@@ -41,7 +41,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     //  Inits.
     ui->setupUi(this);
-    view->scale(0.5,0.5);
+    view->scale(0.25,0.25);
     ui->widgetView->layout()->addWidget(view);
     ui->scrollAreaInfos->setWidget(infosForm);
     ui->scrollAreaInfos->setMinimumWidth(infosForm->sizeHint().width());

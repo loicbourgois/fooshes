@@ -7,7 +7,7 @@ Neuron::Neuron(std::vector<float> coefficients, unsigned int inputCount)
     if(coefficients.size() != inputCount)
         qDebug() << "Problem in neuron : inputCount != coefficientCount";
     this->coefficients = coefficients;
-    outputValue = coefficients[0];
+    outputValue = 0.0f;
 }
 
 float Neuron::getOutput()

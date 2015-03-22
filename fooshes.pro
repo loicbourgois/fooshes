@@ -76,7 +76,8 @@ SOURCES += \
     $${BOX2D}/Dynamics/b2World.cpp \
     $${BOX2D}/Dynamics/b2WorldCallbacks.cpp \
     $${BOX2D}/Rope/b2Rope.cpp \
-    ihm/control_form.cpp
+    ihm/control_form.cpp \
+    ihm/new_simulation_dialog.cpp
 
 HEADERS += \
     options_form.hpp \
@@ -141,13 +142,15 @@ HEADERS += \
     $${BOX2D}/Box2D.h \
     infos_form.hpp \
     main_window.hpp \
-    ihm/control_form.hpp
+    ihm/control_form.hpp \
+    ihm/new_simulation_dialog.hpp
 
 FORMS += \
     main_window.ui \
     options_form.ui \
     infos_form.ui \
-    ihm/control_form.ui
+    ihm/control_form.ui \
+    ihm/new_simulation_dialog.ui
 
 QMAKE_CXXFLAGS += -std=c++11
 

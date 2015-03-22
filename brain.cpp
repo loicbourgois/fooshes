@@ -30,7 +30,7 @@ Brain::~Brain()
     neurons.clear();
 }
 
-void Brain::compute(std::vector<float> & inputs)
+void Brain::compute(std::vector<float> inputs)
 {
     for(unsigned int i = 0 ; i < neurons.size() ; i++)
     {
